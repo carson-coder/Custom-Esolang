@@ -43,6 +43,10 @@ class Compiler():
 		self.stack.remove(self.stack[len(self.stack) - 1])
 	def i(self):
 		self.dot = int(input("Input Number"))
+	def r(self):
+		val = self.dot
+		self.sminus()
+		self.stack.append(val)
 	def main(self):
 		code = self.CODE
 		instr = False
@@ -106,6 +110,8 @@ class Compiler():
 				self.minus()
 			elif code[self.pos[0]][self.pos[1]] == "i" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
 				self.i()
+			elif code[self.pos[0]][self.pos[1]] == "r" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
+				self.r()
 			self.pos = [self.pos[0],self.pos[1] + 1]
 
 
