@@ -1,0 +1,15 @@
+Commands:
+
+1. "$"(STR)"" --prints text
+2. "\n" --next line
+3. "?"(INT)"" --equals
+4. "+" --adds 1 to the dot
+5. "-" removes 1 from the dot
+6. "++" adds the dots value to the stack and settes the dots value to 0
+7. "--" removes the top value from the stack and settes the dots value to it
+8. "i" --get input
+9. "l"(INT)""
+
+Global Vars:
+
+1. Stack --s--
