@@ -1,4 +1,9 @@
-FILEDIR = input("Enter File: ")
+import sys
+
+if len(sys.argv) == 2:
+	FILEDIR = sys.argv[1]
+else:
+	FILEDIR = input("Enter File: ")
 
 FILE = open(FILEDIR, "r")
 
@@ -10,8 +15,6 @@ for y in range(len(CODE)):
 	for x in CODE[y]:
 		test.append(x)
 	CODE_ARRAY.append(test)
-
-print(CODE_ARRAY)
 
 class Compiler():
 	def __init__(self,code):
@@ -100,6 +103,8 @@ class Compiler():
 				self.add()
 			elif code[self.pos[0]][self.pos[1]] == "-" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
 				self.minus()
+			elif code[self.pos[0]][self.pos[1]] == "i" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
+				self.i()
 			self.pos = [self.pos[0],self.pos[1] + 1]
 
 
