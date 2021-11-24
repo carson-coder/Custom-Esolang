@@ -1,4 +1,5 @@
 import sys
+import time
 
 if len(sys.argv) == 2:
 	FILEDIR = sys.argv[1]
@@ -110,5 +111,7 @@ class Compiler():
 
 comp = Compiler(CODE_ARRAY)
 comp.main()
+
+time.sleep(10)
 
 FILE.close()
