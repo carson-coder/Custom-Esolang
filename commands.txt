@@ -9,7 +9,3 @@ Commands:
 7. "--" removes the top value from the stack and settes the dots value to it
 8. "i" --get input
 9. "l"(INT)""
-
-Global Vars:
-
-1. Stack --s--
