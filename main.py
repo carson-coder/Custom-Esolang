@@ -41,7 +41,6 @@ class Compiler():
 		self.dot -= 1
 	def sadd(self):
 		self.stack.append(self.dot)
-		print(self.stack)
 	def sminus(self):
 		self.dot = self.stack[len(self.stack) - 1]
 		self.stack.remove(self.stack[len(self.stack) - 1])
