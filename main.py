@@ -1,9 +1,9 @@
 import sys
 import time
 
-print("Running version 1.2.0")
+print("Running version 1.2.2")
 
-time.sleep(2)
+time.sleep(0.1)
 
 if len(sys.argv) == 2:
 	FILEDIR = sys.argv[1]
@@ -120,6 +120,6 @@ class Compiler():
 comp = Compiler(CODE_ARRAY)
 comp.main()
 
-time.sleep(10)
-
+if input("Restart? [Y/n] ") == "Y":
+	comp.main()
 FILE.close()
