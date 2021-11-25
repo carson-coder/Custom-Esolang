@@ -1,6 +1,10 @@
 import sys
 import time
 
+print("Running version 1.2.0")
+
+time.sleep(2)
+
 if len(sys.argv) == 2:
 	FILEDIR = sys.argv[1]
 else:
@@ -27,7 +31,7 @@ class Compiler():
 		print(text)
 	def nextln(self):
 		self.pos = [self.pos[0] + 1, 0]
-		self.main()
+		return(0)
 	def check(self,ifnt):
 		if self.dot == ifnt:
 			self.nextln()
@@ -37,7 +41,7 @@ class Compiler():
 		self.dot -= 1
 	def sadd(self):
 		self.stack.append(self.dot)
-		self.dot = 0
+		print(self.stack)
 	def sminus(self):
 		self.dot = self.stack[len(self.stack) - 1]
 		self.stack.remove(self.stack[len(self.stack) - 1])
@@ -52,7 +56,8 @@ class Compiler():
 		instr = False
 		instrc = ""
 		mem = ""
-		for i in code[self.pos[0]]:
+		while self.pos[1] < len(code[self.pos[0]]):
+			i = code[self.pos[0]][self.pos[1]]
 			if instr:
 				if not(code[self.pos[0]][self.pos[1]] == '"') or mem == "":
 					if not(mem == ""):
@@ -69,8 +74,7 @@ class Compiler():
 					elif instrc == "i":
 						try:
 							if int(mem) == self.dot:
-								self.nextln()
-								break
+								i = self.nextln()
 							mem = ""
 						except:
 							print(f"Error at {self.pos} arg needs to be number not {mem}")
@@ -78,16 +82,13 @@ class Compiler():
 					elif instrc == "l":
 						try:
 							if int(mem) == self.dot:
-								self.nextln()
-								break
+								i = self.nextln()
 							else:
 								self.pos = [self.pos[0],0]
-								self.main()
-								break
 							mem = ""
 						except:
-							print(f"Error at {self.pos} arg needs to be number not {mem}")
-							exit()
+						 	print(f"Error at {self.pos} arg needs to be number not {mem}")
+						 	break
 			elif code[self.pos[0]][self.pos[1]] == "$" and code[self.pos[0]][self.pos[1] + 1] == '"':
 				instr = True
 				instrc = "o"
