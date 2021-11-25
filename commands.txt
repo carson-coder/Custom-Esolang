@@ -10,3 +10,4 @@ Commands:
 8. "i" --get input
 9. "l"(INT)"" --loop until dot's value is the same is the int
 10. "r" --sets the dots value to the last item on the stack and adds the dots value to the stack
+11. "o" -- outputs the dots value

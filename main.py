@@ -16,9 +16,10 @@ CODE = FILE.readlines()
 CODE_ARRAY = []
 for y in range(len(CODE)):
 	CODE[y] = CODE[y].replace("\n"," ")
-	test = []
+	test = [" "]
 	for x in CODE[y]:
 		test.append(x)
+	test.append(" ")
 	CODE_ARRAY.append(test)
 
 class Compiler():
@@ -45,7 +46,7 @@ class Compiler():
 		self.dot = self.stack[len(self.stack) - 1]
 		self.stack.remove(self.stack[len(self.stack) - 1])
 	def i(self):
-		self.dot = int(input("Input Number"))
+		self.dot = int(input("Input Number: "))
 	def r(self):
 		val = self.dot
 		self.sminus()
@@ -93,7 +94,6 @@ class Compiler():
 				instrc = "o"
 			elif code[self.pos[0]][self.pos[1]] == "\\" and code[self.pos[0]][self.pos[1] + 1] == 'n':
 				self.nextln()
-				break
 			elif code[self.pos[0]][self.pos[1]] == "?" and code[self.pos[0]][self.pos[1] + 1] == '"':
 				instr = True
 				instrc = "i"
@@ -112,6 +112,8 @@ class Compiler():
 				self.i()
 			elif code[self.pos[0]][self.pos[1]] == "r" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
 				self.r()
+			elif code[self.pos[0]][self.pos[1]] == "o" and code[self.pos[0]][self.pos[1] + 1] == ' ' and code[self.pos[0]][self.pos[1] - 1] == ' ':
+				self.output(self.dot)
 			self.pos = [self.pos[0],self.pos[1] + 1]
 
 
